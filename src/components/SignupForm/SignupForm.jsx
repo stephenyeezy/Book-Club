@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
-
 class SignupForm extends Component {
-
   state = {
     name: '',
     email: '',
     password: '',
     passwordConf: ''
   };
-
   handleChange = (e) => {
     this.props.updateMessage('');
     this.setState({
@@ -18,7 +15,6 @@ class SignupForm extends Component {
       [e.target.name]: e.target.value
     });
   }
-
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,11 +27,9 @@ class SignupForm extends Component {
       this.props.updateMessage(err.message);
     }
   }
-
   isFormInvalid() {
     return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
   }
-
   render() {
     return (
       <div>
