@@ -3,6 +3,12 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 
+// Load the env
+require('dotenv').config();
+
+// Require the Database
+require('./config/database');
+
 const app = express();
 
 app.use(logger('dev'));
