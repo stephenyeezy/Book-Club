@@ -1,3 +1,4 @@
+const axios = require('axios');
 const Book = require('../../models/book');
 const { deleteOne } = require('../../models/book');
 
@@ -11,6 +12,7 @@ module.exports = {
 
 async function index(req, res) {
   const books = await Book.find({});
+  console.log(questions);
   res.status(200).json(books);
 }
 
@@ -19,9 +21,16 @@ async function show(req, res) {
   res.status(200).json(puppy);
 }
 
-async function create(req, res) {
-  const book = await Book.create(req.body);
-  res.status(201).json(book);
+function create(req, res) {
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.book}&key=${process.env.GOOGLEBOOK_KEY}`)
+  .then(function(response) {
+    // res.status(201).json(response.data);
+    req.body.book = response.data;
+    Book.create(req.body).then(book => res.json(book));
+  })
+  .catch(function(error) {
+    console.log({error: 'No books found'});
+  });
 }
 
 async function update(req, res) {

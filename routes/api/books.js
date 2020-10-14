@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var booksCtrl = require('../../controllers/api/books');
+const express = require('express');
+const router = express.Router();
+const booksCtrl = require('../../controllers/api/books');
 
 /* GET /api/books */
 router.get('/', booksCtrl.index);
