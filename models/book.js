@@ -9,7 +9,8 @@ var bookSchema = new Schema ({
   published: {type: String},
   ISBN: {type: Number},
   description: {type: String},
-  purchase: {type: String}
+  purchase: {type: String},
+  user: {type: Schema.Types.ObjextId, ref: 'User'}
 }, {
   timestamps: true
 });
