@@ -1,8 +1,9 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const { Link } = require('react-router-dom');
-var Schema = mongoose.Schema;
+const user = require('./user')
+const Schema = mongoose.Schema;
 
-var bookSchema = new Schema ({
+const bookSchema = new Schema ({
   image: {type: String},
   title: {type: String},
   author: {type: String},

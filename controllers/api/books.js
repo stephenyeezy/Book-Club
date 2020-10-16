@@ -12,7 +12,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const book = await Book.find({user: req.user._id});
+  const book = await Book.find({});
   console.log(book);
   res.status(200).json(book);
 }
@@ -32,10 +32,9 @@ function create(req, res) {
     req.body.published = response.data.items[0].volumeInfo.publishedDate;
     req.body.description = response.data.items[0].volumeInfo.description;
     req.body.purchase = response.data.items[0].saleInfo.buyLink;
-    // res.status(201).json(response.data);
-    Book.create(req.body).then(book => res.json(book));
+    Book.create(req.body).then(book => res.status(201).json(book));
   })
-  .catch(function(error) {
+  .catch(function() {
     console.log({error: 'No books found'});
   });
 }
