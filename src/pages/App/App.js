@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import * as bookAPI from '../../services/books-api';
 import BookList from '../../pages/BookListPage/BookListPage';
@@ -50,11 +50,15 @@ class App extends Component {
         handleLogout={this.handleLogout}
         />
         <Switch>
-          <Route exact path='/' render={() =>
-           <h1><BookList /></h1> 
+          <Route exact path='/list' render={() =>
+            userService.getUser() ?
+              <h1><BookList /></h1>
+              : <Redirect to='/login' />
           }/>
           <Route exact path='/add' render={() =>
-            <AddBookPage handleAddBook={this.handleAddBook}/>
+            userService.getUser() ?
+              <AddBookPage handleAddBook={this.handleAddBook}/>
+              : <Redirect to='/login' />
           }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage
