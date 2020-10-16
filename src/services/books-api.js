@@ -5,19 +5,19 @@ export function getAll() {
   .then(res => res.json());
 }
 
-export function create(tome) {
+export function create(book) {
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {'content-type': 'application/json'},
-    body: JSON.stringify(tome)
+    body: JSON.stringify(book)
   }).then(res => res.json());
 }
 
-export function update(tome) {
-  return fetch(`${BASE_URL}/${tome._id}`, {
+export function update(book) {
+  return fetch(`${BASE_URL}/${book._id}`, {
     method: 'PUT',
     headers: {'content-type': 'application/json'},
-    body: JSON.stringify(tome)
+    body: JSON.stringify(book)
   }).then(res => res.json());
 }
 
