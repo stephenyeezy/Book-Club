@@ -25,12 +25,19 @@ class App extends Component {
     this.setState({books});
   }
 
+  async componentDidUpdate(prevProps, prevState) {
+    if (this.state.user !== prevState.user) {
+      const books = await bookAPI.getAll();
+      this.setState({books});
+    }
+  }
+
   handleAddBook = async newBookData => {
     const newBook = await bookAPI.create(newBookData);
     this.setState(state => ({
       books: [...state.books, newBook]
     }),
-    () => this.props.history.push('/'));
+    () => this.props.history.push('/list'));
   }
 
   handleLogout = () => {

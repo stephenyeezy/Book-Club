@@ -6,12 +6,13 @@ module.exports = {
   index,
   show,
   create,
+  search,
   delete: deleteOne,
   update
 };
 
 async function index(req, res) {
-  const book = await Book.find({});
+  const book = await Book.find({user: req.user._id});
   console.log(book);
   res.status(200).json(book);
 }
@@ -22,7 +23,8 @@ async function show(req, res) {
 }
 
 function create(req, res) {
-  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.book}&key=${process.env.GOOGLEBOOK_KEY}`)
+  console.log(req.body)
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.title}&key=${process.env.GOOGLEBOOK_KEY}`)
   .then(function(response) {
     req.body.image = response.data.items[0].volumeInfo.imageLinks.thumbnail;
     req.body.title = response.data.items[0].volumeInfo.title;
@@ -35,6 +37,13 @@ function create(req, res) {
   })
   .catch(function(error) {
     console.log({error: 'No books found'});
+  });
+}
+
+function search(req, res) {
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.title}&key=${process.env.GOOGLEBOOK_KEY}`)
+  .then(function(response) {
+    res.json(response.data)
   });
 }
 

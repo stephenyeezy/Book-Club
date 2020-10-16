@@ -1,5 +1,3 @@
-// import { index } from "../../controllers/api/books";
-
 const BASE_URL = '/api/books';
 
 export default {

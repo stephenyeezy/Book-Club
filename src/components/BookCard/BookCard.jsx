@@ -13,7 +13,7 @@ function BookCard({book}) {
           <dt>Published: {book.published}</dt>
           <dt>Description:</dt>
           <dd>{book.description}</dd>
-          <dd><a href={book.purchase}>Purchase Book</a></dd>
+          {book.purchase && <dd><a href={book.purchase}>Purchase Book</a></dd>}
       </div>
       <div className='panel-footer'>
         <Link to='/'>RETURN TO LIST</Link>

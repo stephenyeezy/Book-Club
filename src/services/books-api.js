@@ -1,8 +1,15 @@
+import tokenService from '../utils/tokenService';
+
 const BASE_URL = '/api/books';
 
 export function getAll() {
-  return fetch(BASE_URL)
-  .then(res => res.json());
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  };
+  return fetch(BASE_URL, options).then(res => res.json());
 }
 
 export function create(book) {

@@ -10,7 +10,7 @@ var bookSchema = new Schema ({
   ISBN: {type: Number},
   description: {type: String},
   purchase: {type: String},
-  // user: {type: mongoose.Schema.Types.ObjextId, ref: 'User'}
+  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 }, {
   timestamps: true
 });
