@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import * as bookAPI from '../../services/books-api';
 import BookList from '../../pages/BookListPage/BookListPage';
@@ -22,15 +22,15 @@ class App extends Component {
   /*--- Callback Methods ---*/
   async componentDidMount() {
     const books = await bookAPI.getAll();
-    this.setState({books});
+    this.setState({books: books});
   }
 
-  async componentDidUpdate(prevProps, prevState) {
-    if (this.state.user !== prevState.user) {
-      const books = await bookAPI.getAll();
-      this.setState({books});
-    }
-  }
+  // async componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.user !== this.state.user) {
+  //     const books = await bookAPI.getAll();
+  //     this.setState({ books: books});
+  //   }
+  // }
 
   handleAddBook = async newBookData => {
     const newBook = await bookAPI.create(newBookData);
@@ -48,6 +48,16 @@ class App extends Component {
     this.setState({user: userService.getUser()})
   }
 
+  handleDeleteBook = async id => {
+    await bookAPI.deleteOne(id);
+    this.setState(state => ({
+        books: state.books.filter(b => b._id !==id)
+      }),
+      () => this.props.history.push('/list')
+    );
+  }
+
+
   /*--- Lifecycle Methods ---*/
   render() {
     return (
@@ -58,14 +68,15 @@ class App extends Component {
         />
         <Switch>
           <Route exact path='/list' render={() =>
-            userService.getUser() ?
-              <h1><BookList /></h1>
-              : <Redirect to='/login' />
+            <h1><BookList 
+                  books={this.state.books}
+                  handleDeleteBook={this.handleDeleteBook}/>
+            </h1>
           }/>
           <Route exact path='/add' render={() =>
-            userService.getUser() ?
-              <AddBookPage handleAddBook={this.handleAddBook}/>
-              : <Redirect to='/login' />
+            // userService.getUser() ?
+               <AddBookPage handleAddBook={this.handleAddBook}/>
+            //   : <Redirect to='/login' />
           }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage

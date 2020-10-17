@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const { Link } = require('react-router-dom');
-const user = require('./user')
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema ({
@@ -11,7 +9,7 @@ const bookSchema = new Schema ({
   ISBN: {type: Number},
   description: {type: String},
   purchase: {type: String},
-  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
   timestamps: true
 });

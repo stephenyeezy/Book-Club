@@ -16,7 +16,7 @@ function BookCard({book}) {
           {book.purchase && <dd><a href={book.purchase}>Purchase Book</a></dd>}
       </div>
       <div className='panel-footer'>
-        <Link to='/'>RETURN TO LIST</Link>
+        <Link to='/list'>RETURN TO LIST</Link>
       </div>
     </div>    
   );

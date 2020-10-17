@@ -1,6 +1,5 @@
 const axios = require('axios');
 const Book = require('../../models/book');
-const { deleteOne } = require('../../models/book');
 
 module.exports = {
   index,
@@ -44,6 +43,11 @@ function search(req, res) {
   .then(function(response) {
     res.json(response.data)
   });
+}
+
+async function deleteOne(req, res) {
+  const deletedBook = await Book.findByIdAndRemove(req.params.id);
+  res.status(200).json(deletedBook);
 }
 
 async function update(req, res) {

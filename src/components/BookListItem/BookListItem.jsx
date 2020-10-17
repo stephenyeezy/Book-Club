@@ -9,7 +9,7 @@ function BookListItem(props) {
         <img src={props.book.image} alt="thumbnail"></img>
         <h3 className='panel-title'>{props.book.title}</h3>
       </div>
-      <div className='panel-footer PuppyListItem-action-panel'>
+      <div className='panel-footer BookListItem-action-panel'>
       <Link
         className='btn btn-xs'
         to={{
@@ -19,16 +19,8 @@ function BookListItem(props) {
       >
         DETAILS
       </Link>
-      <Link
-        className='btn btn-xs'
-        to={{
-          pathname: '/edit',
-          state: {book: props.book}
-        }}
-      >
-        EDIT
-      </Link>
       <button
+        type="submit"
         className="btn btn-xs margin-left-10"
         onClick={() => props.handleDeleteBook(props.book._id)}
       >
