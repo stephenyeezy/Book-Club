@@ -19,18 +19,10 @@ class App extends Component {
     };
   }
 
-  /*--- Callback Methods ---*/
   async componentDidMount() {
     const books = await bookAPI.getAll();
     this.setState({books: books});
   }
-
-  // async componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.user !== this.state.user) {
-  //     const books = await bookAPI.getAll();
-  //     this.setState({ books: books});
-  //   }
-  // }
 
   handleAddBook = async newBookData => {
     const newBook = await bookAPI.create(newBookData);
@@ -51,7 +43,7 @@ class App extends Component {
   handleDeleteBook = async id => {
     await bookAPI.deleteOne(id);
     this.setState(state => ({
-        books: state.books.filter(b => b._id !==id)
+        books: state.books.filter(b => b._id !== id)
       }),
       () => this.props.history.push('/list')
     );
