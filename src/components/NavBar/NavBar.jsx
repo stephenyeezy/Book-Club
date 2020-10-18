@@ -5,8 +5,10 @@ import './NavBar.css';
 const NavBar = (props) => {
   let nav = props.user ?
     <div>
-      <Link to='' className='home'>Book Club</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <div class="home">
+        <Link to='' className='home'><img class="logo" src="https://i.imgur.com/H5zpFzv.png" alt="logo"></img></Link>
+      </div>
+      <hr></hr>
       <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <Link to='/list' className='NavBar-link'>Book List</Link>

@@ -66,6 +66,7 @@ class App extends Component {
         user={this.state.user} 
         handleLogout={this.handleLogout}
         />
+        <img class="library" src="https://i.imgur.com/IWhgTJw.png" alt="library"></img>
         <Switch>
           <Route exact path='/list' render={() =>
             <h1><BookList 

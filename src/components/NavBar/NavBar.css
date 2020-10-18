@@ -1,9 +1,14 @@
 .NavBar {
   display: flex;
   justify-content: center;
-  margin: 0 0 20px;
 }
 
-.NavBar-link {
-  margin: 0 10px;
+.home {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 30%;
+  margin-top: 10px;
 }

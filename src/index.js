@@ -6,11 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Route render={({history}) => <App history={history} />} />
-      </Router>
-  </React.StrictMode>, document.getElementById('root'));
+<Router><Route render={({ history }) => <App history={history} />} /></Router>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
