@@ -1,6 +1,6 @@
-.BookListPage-grid {
-  width: 80%;
+.BookList-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: max-content;
+  grid-gap: 30px;
+  padding: 25px 30px 30px 50px;
 }

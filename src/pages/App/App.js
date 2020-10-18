@@ -57,8 +57,6 @@ class App extends Component {
     );
   }
 
-
-  /*--- Lifecycle Methods ---*/
   render() {
     return (
       <div>

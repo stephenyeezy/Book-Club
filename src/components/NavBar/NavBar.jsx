@@ -1,29 +1,34 @@
 import React from 'react';
+import Scrollspy from 'react-scrollspy';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = (props) => {
   let nav = props.user ?
+  <Scrollspy items={['#list', '#add']} currentClassName="is-current">
     <div>
       <div class="home">
         <Link to='' className='home'><img class="logo" src="https://i.imgur.com/H5zpFzv.png" alt="logo"></img></Link>
       </div>
       <hr></hr>
       <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <Link to='/list' className='NavBar-link'>Book List</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <Link to='/add' className='NavBar-link'>ADD BOOK</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to='' onClick={props.handleLogout} className='NavBar-link'>LOG OUT</Link>
+      &nbsp;&nbsp;
+      <Link to='/list' className='nav-link'>Book List</Link>
+      &nbsp;&nbsp;
+      <Link to='/add' className='nav-link'>Add Book +</Link>
+      &nbsp;&nbsp;
+      <Link to='' onClick={props.handleLogout} className='nav-link'>Log Out</Link>
     </div>
+  </Scrollspy>
     :
     <div>
-      <Link to='' className='NavBar-link'>Book Club</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <Link to='/login' className='NavBar-link'>LOG IN</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to='/signup' className='NavBar-link'>SIGN UP</Link>
+      <div class="home">
+        <Link to='' className='home'><img class="logo" src="https://i.imgur.com/H5zpFzv.png" alt="logo"></img></Link>
+      </div>
+      <hr></hr>
+      <Link to='/login' className='nav-link'>LOG IN</Link>
+      &nbsp;&nbsp;
+      <Link to='/signup' className='nav-link'>SIGN UP</Link>
     </div>;
 
   return (

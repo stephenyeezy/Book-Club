@@ -20,7 +20,6 @@ function BookListItem(props) {
         DETAILS
       </Link>
       <button
-        type="submit"
         className="btn btn-xs margin-left-10"
         onClick={() => props.handleDeleteBook(props.book._id)}
       >

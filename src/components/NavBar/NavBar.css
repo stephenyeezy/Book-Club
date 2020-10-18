@@ -3,6 +3,15 @@
   justify-content: center;
 }
 
+.nav-link {
+  padding: 20px 20px 20px 20px;
+  justify-content: space-between;
+}
+
+.nav-link:hover {
+  background-color: #ffd7ff;
+}
+
 .home {
   display: flex;
   justify-content: center;

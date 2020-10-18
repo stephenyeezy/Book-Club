@@ -22,7 +22,7 @@ export function update(book) {
 }
 
 export function deleteOne(id) {
-  return fetch(`${BASE_URL}/${id}`,{
+  return fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE'
   }).then(res => res.json());
 }
