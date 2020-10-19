@@ -11,6 +11,8 @@ A place to share and review books!
 * CSS
 * HTML
 * React
+* MongoDB
+* Google Books API
 ## Getting Started
 Please follow the below link to deploy the site.
 
