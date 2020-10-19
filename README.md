@@ -13,6 +13,7 @@ A place to share and review books!
 * React
 * MongoDB
 * Google Books API
+* JWT
 ## Getting Started
 Please follow the below link to deploy the site.
 
