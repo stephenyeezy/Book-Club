@@ -4,7 +4,7 @@ import './BookListItem.css';
 
 function BookListItem(props) { 
   return (
-    <div className='panel panel-default'>
+    <div className='panel panel-default BookListItem'>
       <div className="panel-heading">
         <img src={props.book.image} alt="thumbnail"></img>
         <h3 className='panel-title'>{props.book.title}</h3>

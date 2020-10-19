@@ -1,4 +1,14 @@
 .BookListItem-action-panel {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.BookListItem {
+  width: 200px;
+  margin: 0px 20px 20px 20px;
+}
+
+.panel-heading {
+  display: grid;
+  align-items: center;
 }
